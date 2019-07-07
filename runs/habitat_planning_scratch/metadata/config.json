@@ -1,0 +1,103 @@
+{
+  "cfg": {
+    "env": {
+      "add_timestep": false,
+      "additional_repeat_count": 0,
+      "env_name": "Habitat_PointNav",
+      "env_specific_kwargs": {
+        "gpu_devices": [
+          1
+        ],
+        "map_kwargs": {
+          "history_size": null,
+          "map_building_size": 22,
+          "map_max_pool": false,
+          "use_cuda": false
+        },
+        "swap_building_k_episodes": 10,
+        "target_dim": 9,
+        "train_scenes": null,
+        "val_scenes": [
+          "Denmark",
+          "Greigsville",
+          "Eudora",
+          "Pablo",
+          "Elmira",
+          "Mosquito",
+          "Sands",
+          "Swormville",
+          "Sisters",
+          "Scioto",
+          "Eastville",
+          "Edgemere",
+          "Cantwell",
+          "Ribera"
+        ]
+      },
+      "num_processes": 8,
+      "num_val_processes": 1,
+      "sensors": {
+        "features": null,
+        "map": null,
+        "rgb_filled": null,
+        "target": null,
+        "taskonomy": null
+      },
+      "transform_fn_post_aggregation": null,
+      "transform_fn_pre_aggregation": "TransformFactory.independent({'map':map_pool((3,84,84)),'rgb_filled':rescale_centercrop_resize((3,84,84)),'target':identity_transform(),'global_pos':identity_transform(),},keep_unnamed=False)"
+    },
+    "learner": {
+      "algo": "ppo",
+      "clip_param": 0.1,
+      "entropy_coef": 0.0001,
+      "eps": 1e-05,
+      "gamma": 0.99,
+      "internal_state_size": 512,
+      "lr": 0.0001,
+      "max_grad_norm": 0.5,
+      "num_mini_batch": 8,
+      "num_stack": 4,
+      "num_steps": 1000,
+      "off_policy_epoch": 8,
+      "on_policy_epoch": 8,
+      "perception_network": "AtariNet",
+      "perception_network_kwargs": {
+        "n_map_channels": 3,
+        "use_target": true
+      },
+      "ppo_epoch": 8,
+      "recurrent_policy": false,
+      "replay_buffer_size": 3000,
+      "tau": 0.95,
+      "test": false,
+      "use_gae": true,
+      "use_replay": true,
+      "value_loss_coef": 0.001
+    },
+    "saving": {
+      "autofix_log_dir": false,
+      "checkpoint": "/mnt/logdir/habitat_planning_scratch_re_re_re_re",
+      "checkpoint_configs": false,
+      "log_dir": "/mnt/logdir2/habitat_planning_scratch_re_re_re_re_re",
+      "log_interval": 10,
+      "logging_type": "tensorboard",
+      "results_log_file": "/mnt/logdir2/habitat_planning_scratch_re_re_re_re_re/result_log.pkl",
+      "reward_log_file": "/mnt/logdir2/habitat_planning_scratch_re_re_re_re_re/rewards.pkl",
+      "save_dir": "checkpoints",
+      "save_interval": 100,
+      "vis_interval": 200,
+      "visdom_log_file": "/mnt/logdir2/habitat_planning_scratch_re_re_re_re_re/visdom_logs.json",
+      "visdom_port": "8097",
+      "visdom_server": "localhost"
+    },
+    "training": {
+      "cuda": true,
+      "num_frames": 100000000.0,
+      "resumable": true,
+      "seed": 42
+    }
+  },
+  "image_dim": 84,
+  "seed": 652816837,
+  "uuid": "corl_habitat_scratch_re_re_re_re_re"
+}
